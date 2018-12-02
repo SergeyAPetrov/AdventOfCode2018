@@ -2,7 +2,7 @@
     (:require [clojure.test :refer :all]
               [aoc2018.aoc1 :refer :all]))
 
-(deftest parseInput
+(deftest day1
     (testing "one part input"
         (let [result (parse-input-row "+1")]
             (is (= (:operation result) +))
