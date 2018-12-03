@@ -1,12 +1,5 @@
-(ns aoc2018.aoc2)
-
-(defn parse-input-row
-    [s]
-    s)
-
-(defn parse-input
-    [s]
-    (map parse-input-row (clojure.string/split-lines s)))
+(ns aoc2018.aoc2
+    (:require [aoc2018.common :refer :all]))
  
 (defn has-letter-n-times 
     [s n]
@@ -14,7 +7,7 @@
 
 (defn solve1
     [s]
-    (let [parsed-input (parse-input s)]
+    (let [parsed-input (parse-input s identity)]
         (let [twoTimes (filter #(has-letter-n-times % 2) parsed-input)
               threeTimes (filter #(has-letter-n-times % 3) parsed-input)
               twoTimesCout (count twoTimes)
@@ -26,16 +19,9 @@
     (filter #(not(nil? %)) (map (fn [c1 c2] (if (= c1 c2) c1 nil))
      s1 s2)))
 
-(defn cart [colls]
-    (if (empty? colls)
-        '(())
-        (for [x (first colls)
-            more (cart (rest colls))]
-        (cons x more))))
-
 (defn solve2
     [s]
-    (let [parsed-input (parse-input s)
+    (let [parsed-input (parse-input s identity)
           word-length (dec (count (first parsed-input)))
           cartesian-product (cart [parsed-input parsed-input])
           common-letters-map (map (fn [[s1 s2]] (get-common-letters s1 s2)) cartesian-product)]

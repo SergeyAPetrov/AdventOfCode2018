@@ -1,6 +1,7 @@
 (ns aoc2018.aoc1test
     (:require [clojure.test :refer :all]
-              [aoc2018.aoc1 :refer :all]))
+              [aoc2018.aoc1 :refer :all]
+              [aoc2018.common :refer :all]))
 
 (deftest day1
     (testing "one part input"
@@ -13,7 +14,7 @@
             (is (= (:argument result) 2))
         ))
     (testing "full input"
-        (let [result (parse-input "+1\n-2")]
+        (let [result (parse-input "+1\n-2" parse-input-row)]
             (let [first (nth result 0) second (nth result 1)]
                 (is (= (:operation first) +))
                 (is (= (:argument first) 1))
