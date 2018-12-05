@@ -3,7 +3,6 @@
 
 (defn parse-input-row
     [s]
-    ; (println s)
     (let [[id x1 y1 w h]
         (->> s
         (re-matches #"#(\d+) @ (\d+),(\d+): (\d+)x(\d+)")
